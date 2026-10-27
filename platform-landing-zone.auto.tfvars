@@ -119,6 +119,13 @@ management_group_settings = {
   }
 
   policy_assignments_to_modify = {
+    platform = {
+      policy_assignments = {
+        Deploy-MDFC-DefSQL-AMA = {
+          creation_enabled = false
+        }
+      }
+    }
     alz = {
       policy_assignments = {
         # Skip Defender configuration and automatic onboarding policies.
@@ -153,7 +160,6 @@ management_group_settings = {
         }
       }
     }
-
     connectivity = {
       policy_assignments = {
         Enable-DDoS-VNET = {
