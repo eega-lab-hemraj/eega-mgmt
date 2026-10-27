@@ -7,8 +7,8 @@ custom_replacements = {
 
     # Keep paid networking services disabled for this lab.
     ddos_protection_plan_enabled                          = false
-    primary_firewall_enabled                             = false
-    primary_firewall_sku_tier                            = "Basic"
+    primary_firewall_enabled                              = false
+    primary_firewall_sku_tier                             = "Basic"
     primary_virtual_network_gateway_express_route_enabled = false
     primary_virtual_network_gateway_vpn_enabled           = false
     primary_private_dns_zones_enabled                     = false
@@ -17,12 +17,12 @@ custom_replacements = {
     primary_bastion_enabled                               = false
 
     # Resource group names
-    management_resource_group_name              = "rg-management-$${starter_location_01}"
+    management_resource_group_name               = "rg-management-$${starter_location_01}"
     connectivity_hub_primary_resource_group_name = "rg-hub-$${starter_location_01}"
-    dns_resource_group_name                     = "rg-hub-dns-$${starter_location_01}"
-    ddos_resource_group_name                    = "rg-hub-ddos-$${starter_location_01}"
-    asc_export_resource_group_name              = "rg-asc-export-$${starter_location_01}"
-    service_health_alerts_resource_group_name   = "rg-service-health-alerts-$${starter_location_01}"
+    dns_resource_group_name                      = "rg-hub-dns-$${starter_location_01}"
+    ddos_resource_group_name                     = "rg-hub-ddos-$${starter_location_01}"
+    asc_export_resource_group_name               = "rg-asc-export-$${starter_location_01}"
+    service_health_alerts_resource_group_name    = "rg-service-health-alerts-$${starter_location_01}"
 
     # Management resource names
     log_analytics_workspace_name            = "law-management-$${starter_location_01}"
@@ -37,7 +37,7 @@ custom_replacements = {
   }
 
   resource_group_identifiers = {
-    management_resource_group_id          = "/subscriptions/$${subscription_id_management}/resourcegroups/$${management_resource_group_name}"
+    management_resource_group_id           = "/subscriptions/$${subscription_id_management}/resourcegroups/$${management_resource_group_name}"
     ddos_protection_plan_resource_group_id = "/subscriptions/$${subscription_id_connectivity}/resourcegroups/$${ddos_resource_group_name}"
     primary_connectivity_resource_group_id = "/subscriptions/$${subscription_id_connectivity}/resourceGroups/$${connectivity_hub_primary_resource_group_name}"
     dns_resource_group_id                  = "/subscriptions/$${subscription_id_connectivity}/resourceGroups/$${dns_resource_group_name}"
@@ -45,9 +45,9 @@ custom_replacements = {
 
   resource_identifiers = {
     ama_change_tracking_data_collection_rule_id = "$${management_resource_group_id}/providers/Microsoft.Insights/dataCollectionRules/$${dcr_change_tracking_name}"
-    ama_mdfc_sql_data_collection_rule_id         = "$${management_resource_group_id}/providers/Microsoft.Insights/dataCollectionRules/$${dcr_defender_sql_name}"
-    ama_vm_insights_data_collection_rule_id      = "$${management_resource_group_id}/providers/Microsoft.Insights/dataCollectionRules/$${dcr_vm_insights_name}"
-    ama_user_assigned_managed_identity_id        = "$${management_resource_group_id}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$${ama_user_assigned_managed_identity_name}"
+    ama_mdfc_sql_data_collection_rule_id        = "$${management_resource_group_id}/providers/Microsoft.Insights/dataCollectionRules/$${dcr_defender_sql_name}"
+    ama_vm_insights_data_collection_rule_id     = "$${management_resource_group_id}/providers/Microsoft.Insights/dataCollectionRules/$${dcr_vm_insights_name}"
+    ama_user_assigned_managed_identity_id       = "$${management_resource_group_id}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$${ama_user_assigned_managed_identity_name}"
     log_analytics_workspace_id                  = "$${management_resource_group_id}/providers/Microsoft.OperationalInsights/workspaces/$${log_analytics_workspace_name}"
     ddos_protection_plan_id                     = "$${ddos_protection_plan_resource_group_id}/providers/Microsoft.Network/ddosProtectionPlans/$${ddos_protection_plan_name}"
   }
@@ -62,10 +62,10 @@ tags = {
 management_resources_enabled = true
 
 management_resource_settings = {
-  location                              = "$${starter_location_01}"
-  log_analytics_workspace_name          = "$${log_analytics_workspace_name}"
+  location                               = "$${starter_location_01}"
+  log_analytics_workspace_name           = "$${log_analytics_workspace_name}"
   log_analytics_workspace_daily_quota_gb = 0.1
-  resource_group_name                   = "$${management_resource_group_name}"
+  resource_group_name                    = "$${management_resource_group_name}"
 
   user_assigned_managed_identities = {
     ama = {
@@ -96,15 +96,15 @@ management_group_settings = {
 
   policy_default_values = {
     ama_change_tracking_data_collection_rule_id = "$${ama_change_tracking_data_collection_rule_id}"
-    ama_mdfc_sql_data_collection_rule_id         = "$${ama_mdfc_sql_data_collection_rule_id}"
-    ama_vm_insights_data_collection_rule_id      = "$${ama_vm_insights_data_collection_rule_id}"
-    ama_user_assigned_managed_identity_id        = "$${ama_user_assigned_managed_identity_id}"
-    ama_user_assigned_managed_identity_name      = "$${ama_user_assigned_managed_identity_name}"
+    ama_mdfc_sql_data_collection_rule_id        = "$${ama_mdfc_sql_data_collection_rule_id}"
+    ama_vm_insights_data_collection_rule_id     = "$${ama_vm_insights_data_collection_rule_id}"
+    ama_user_assigned_managed_identity_id       = "$${ama_user_assigned_managed_identity_id}"
+    ama_user_assigned_managed_identity_name     = "$${ama_user_assigned_managed_identity_name}"
     log_analytics_workspace_id                  = "$${log_analytics_workspace_id}"
     resource_group_name_service_health_alerts   = "$${service_health_alerts_resource_group_name}"
     resource_group_name_mdfc                    = "$${asc_export_resource_group_name}"
-    resource_group_location                    = "$${starter_location_01}"
-    email_security_contact                     = "$${defender_email_security_contact}"
+    resource_group_location                     = "$${starter_location_01}"
+    email_security_contact                      = "$${defender_email_security_contact}"
   }
 
   subscription_placement = {
@@ -262,3 +262,4 @@ telemetry_additional_content = {
   deployed_by    = "alz-terraform-accelerator"
   correlation_id = "00000000-0000-0000-0000-000000000000"
 }
+
